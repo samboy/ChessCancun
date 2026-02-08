@@ -20,6 +20,11 @@ Hence, this repo does not include any vector representations, neither
 those made by Señor Marroquin nor by the book he got the visual images
 from.
 
+In addition, it is my understanding that Señor Marroquin does not 
+feel he requires any compensation for this font, since he talks about
+it being free to use; any donations are optional.  Indeed, if I could
+locate Señor Marroquin, I would give him a donation.
+
 Because of this, all files here are public domain, free of any and all
 copyright restrictions.
 
