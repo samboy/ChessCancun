@@ -16,14 +16,15 @@ Exchange](https://archive.ph/20260208233651/https://law.stackexchange.com/questi
 >be a representation of the appearance and not include Marroquin’s 
 >creative work
 
-Hence, this repo does not include any vector representations, neither
-those made by Señor Marroquin nor by the book he got the visual images
-from.
+Hence, this repo does not include any copied vector representations,
+neither those made by Marroquin nor by the book he got the visual
+images from.  All SVG and other vector representations are derived 
+from the raster images in the PNG directory.
 
-In addition, it is my understanding that Señor Marroquin does not 
-feel he requires any compensation for this font, since he talks about
-it being free to use; any donations are optional.  Indeed, if I could
-locate Señor Marroquin, I would give him a donation.
+In addition, it is my understanding that Marroquin does not feel he
+requires any compensation for this font, since he talks about it being
+free to use; any donations are optional.  Indeed, if I could locate
+Marroquin, I would give him a donation.
 
 Because of this, all files here are public domain, free of any and all
 copyright restrictions.
