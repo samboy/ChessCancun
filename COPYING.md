@@ -19,7 +19,9 @@ Exchange](https://archive.ph/20260208233651/https://law.stackexchange.com/questi
 Hence, this repo does not include any copied vector representations,
 neither those made by Marroquin nor by the book he got the visual
 images from.  All SVG and other vector representations are derived 
-from the raster images in the PNG directory.
+from the raster images in the PNG directory.  The TTF font here looks
+like Chess Merida, but at the vector level, it’s quite different (it
+generally uses a lot more vectors to make the same images). 
 
 In addition, it is my understanding that Marroquin does not feel he
 requires any compensation for this font, since he talks about it being
@@ -30,5 +32,6 @@ Because of this, all files here are public domain, free of any and all
 copyright restrictions.
 
 Since the font is over 25 years old, any design patents or other IP
-protecting the appearance of this font in some jurisdictions has expired.
+protecting the appearance of this font in many jurisdictions has 
+expired.
 
