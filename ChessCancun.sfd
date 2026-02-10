@@ -3,9 +3,9 @@ FontName: ChessCancun
 FullName: ChessCancun
 FamilyName: ChessCancun
 Weight: Regular
-Copyright: Donated to the public domain 2026 by Sam Trenholme\n\nOriginal font drawn from figures in a book 1997-1998 by Marroquin\n\nFont converted in to PNG then back in to vector format using\nInkscape's automated tracing tool as well as Fontforce\n\nNo vector information from the original font is in this font\n\nSince in most jurisdictions, fonts cannot be copyrighted, or the\nterm is 25 years or less, this version does not have copyright\n\nThe original font was "freeware"; this font is public domain
+Copyright: Donated to the public domain 2026 by Sam Trenholme\n\nOriginal font drawn from figures in a book 1997-1998 by Marroquin\n\nFont converted in to PNG then redrawn using Inkscape's automated \ntracing tool as well as Fontforge\n\nNo vector information from the original font is in this font; this is a \nfreshly drawn font\n\nSince in most jurisdictions, fonts cannot be copyrighted, or the\nterm is 25 years or less, this version does not have copyright\n\nThe original font was "freeware"; this font is public domain
 UComments: "2022-4-14: Created with FontForge (http://fontforge.org)"
-Version: 001.004
+Version: 001.005
 ItalicAngle: 0
 UnderlinePosition: 0
 UnderlineWidth: 0
@@ -21,7 +21,7 @@ OS2Version: 0
 OS2_WeightWidthSlopeOnly: 0
 OS2_UseTypoMetrics: 1
 CreationTime: 1650005861
-ModificationTime: 1770704779
+ModificationTime: 1770758772
 PfmFamily: 17
 TTFWeight: 400
 TTFWidth: 5
