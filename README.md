@@ -20,7 +20,7 @@ $RnAbDkBqNr%
 /(((((((((()
 ```
 
-The above will look like this in a word processing document:
+The above will look like this in a word processing document: 
 
 ![Chess Cancun Finesse Chess](https://samboy.github.io/ChessCancun/FinesseChess.png)
 
