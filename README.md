@@ -27,6 +27,7 @@ The above will look like this in a word processing document:
 Here is how the opening position in Classic chess would look using 
 this font:
 
+```
 !""""""""#
 $tMvWlVmT%
 $OoOoOoOo%
@@ -37,6 +38,7 @@ $+ + + + %
 $pPpPpPpP%
 $RnBqKbNr%
 /(((((((()
+```
 
 Upper case letters are pieces on dark squares; lower case letters
 are pieces on light squares.  The pieces are as follows:
