@@ -43,6 +43,7 @@ $RnBqKbNr%
 Upper case letters are pieces on dark squares; lower case letters
 are pieces on light squares.  The pieces are as follows:
 
+```
 R: White Rook
 T: Black Rook
 N: White Knight
@@ -55,13 +56,16 @@ K: White King
 L: Black King
 P: White Pawn
 O: Black Pawn
+```
 
 Support for two fairy pieces is also provided:
 
+```
 A: White Archbishop (Knight + Bishop)
 S: Black Archbishop
 D: White Marshal (Knight + Rook)
 F: Black Marshal
+```
 
 A space is an empty white square; a `+` is an empty black square.
 
