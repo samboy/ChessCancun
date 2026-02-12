@@ -35,3 +35,6 @@ Since the font is over 25 years old, any design patents or other IP
 protecting the appearance of this font in many jurisdictions has 
 expired.
 
+In addition, further web searching has found [a book from 1952 with
+a font substantially like this 
+font](https://archive.ph/20260212011847/https://chess.stackexchange.com/questions/14979/what-is-the-origin-of-the-merida-chess-font).
