@@ -31,9 +31,10 @@ Marroquin, I would give him a donation.
 Because of this, all files here are public domain, free of any and all
 copyright restrictions.
 
-Since the font is over 25 years old, any design patents or other IP
-protecting the appearance of this font in many jurisdictions has 
-expired.
+Since [the font is over 25 years 
+old](https://archive.ph/19991128171035/http://www.enpassant.dk/chess/fontimg/merida.htm), 
+any design patents or other IP protecting the appearance of this font
+in many jurisdictions has expired.
 
 In addition, further web searching has found [a book from 1952 with
 a font substantially like this 
