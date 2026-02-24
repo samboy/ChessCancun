@@ -39,3 +39,13 @@ in many jurisdictions has expired.
 In addition, further web searching has found [a book from 1952 with
 a font substantially like this 
 font](https://archive.ph/20260212011847/https://chess.stackexchange.com/questions/14979/what-is-the-origin-of-the-merida-chess-font).
+
+---
+
+The CancunNotation font (except for the Chess figurines) is OFL licensed, 
+as follows:
+
+Copyright 2020 The Roboto Serif Project Authors (https://github.com/googlefonts/RobotoSerif)
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is available with a FAQ at http://scripts.sil.org/OFL
