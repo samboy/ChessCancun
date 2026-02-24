@@ -77,22 +77,90 @@ function FENtoDiagram(FEN)
       inNumber = false
       width = width + number
       number = 0
+      if FEN:sub(a,a) == "/" then break end
+      width = width + 1
     end
-    if FEN:sub(a,a) == "/" then break end
-    width = width + 1
-    a = a + 1
   end
   number = 0
+  inNumber = false
 
   -- We now know the width of the board, output the first row in 
   -- diagram notation (this is the notation the ChessCancun font uses)
   -- This is the top border of the Chess board
-  out = "!"
+  out = "!" -- Upper right corner
   for a=1,width do
-    out = out .. '"'
+    out = out .. '"' -- Top edge
   end
-  out = out .. '#'
-  return out -- DEBUG
+  out = out .. "#\n" -- Upper right corner
+  out = out .. "$" -- left edge
+  local newLine = false
+  for a=1,#FEN do
+    local thisSquare = FEN:sub(a,a)
+    if thisSquare:match("%d") and inNumber == false then
+      number = tonumber(FEN:sub(a,a))
+      inNumber = true
+    elseif thisSquare:match("%d") then
+      number = number * 10
+      number = number + tonumber(FEN:sub(a,a))
+    end
+    if thisSquare:match("%D") or a==#FEN then 
+      for b=1,number do
+        if newLine then
+          newLine = false
+          out = out .. "$"
+        end
+        if color % 2 == 0 then
+          out = out .. " " -- Empty white square
+        else
+          out = out .. "+" -- Empty black square
+        end
+        color = color + 1
+      end
+      number = 0
+      inNumber = false
+    end  
+    if thisSquare:match("%u") then -- White piece
+      -- Chacellor/Marshal Rook + Knight piece is “D” in our mapping
+      if thisSquare == 'C' or thisSquare == 'M' then
+        thisSquare = 'D'
+      end
+      if newLine then
+        newLine = false
+        out = out .. "$"
+      end
+      if color % 2 == 0 then -- If on light square
+        out = out .. thisSquare:lower()
+      else
+        out = out .. thisSquare
+      end
+      color = color + 1
+    elseif thisSquare:match("%l") then -- Black piece
+      thisSquare = map[thisSquare]
+      if thisSquare then
+        if newLine then
+          newLine = false
+          out = out .. "$"
+        end
+        if color % 2 == 0 then -- If on light square
+          out = out .. thisSquare
+        else
+          out = out .. thisSquare:upper()
+        end
+        color = color + 1
+      end
+    elseif thisSquare:match("/") then -- new line
+      out = out .. "%\n"
+      newLine = true
+      color = color + 1
+    end
+  end
+  -- Bottom of board
+  out = out .. "%\n/"
+  for a=1,width do
+    out = out .. '(' -- Bottom edge
+  end
+  out = out .. ')' -- Lower right corner
+  return out
 end
 
 FEN = arg[1]
