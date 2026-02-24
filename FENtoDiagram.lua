@@ -46,3 +46,46 @@ exec $LUNACY $0 "$@"
 -- ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 -- OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
+-- White -> Black mapping
+map={}
+map.p = "o"
+map.n = "m"
+map.b = "v"
+map.r = "t"
+map.q = "w"
+map.k = "l"
+map.a = "s"
+map.d = "f"
+map.c = "f"
+map.m = "f"
+
+FEN = arg[1]
+if not FEN then 
+  FEN="rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR"
+end
+
+line = ""
+out = ""
+color = 0 -- Upper left square is white
+width = 0
+number = 0
+inNumber = false
+for a=1,#FEN do
+  if FEN:sub(a,a):match("%d") and inNumber == false then
+    number = tonumber(FEN:sub(a,a))
+    inNumber = true
+  elseif FEN:sub(a,a):match("%d") then
+    number = number * 10
+    number = number + tonumber(FEN:sub(a,a))
+  else
+    inNumber = false
+    width = width + number
+    number = 0
+  end
+  if FEN:sub(a,a) == "/" then break end
+  width = width + 1
+  a = a + 1
+end
+number = 0
+print(width) -- DEBUG
+  
