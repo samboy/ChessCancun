@@ -3,6 +3,8 @@ to have proper white background in the figures, allowing us to have a
 different background color, allowing us to use CSS to specify the
 background color.
 
+The only colors used by the font are white and black.
+
 The font was made in the `SVG/WhiteBG` directory using the following
 commands:
 
@@ -11,27 +13,27 @@ sh make.nanoemoji.sh
 #nanoemoji --family ChessCancunColor --color_format glyf_colr_0 emoji_*
 ```
 
-(This had to be done in Ubuntu 14.04 LTS because it’s impossible to
+(This had to be done in Ubuntu 24.04 LTS because it’s impossible to
  install nanoemoji in Cygwin.  Sigh.)
 
 The mapping is this, where lower case is Black and upper case is White
 (as per the FEN specification):
 
-`a`: Archbishop (Bishop + Knight)
-`b`: Bishop
-`k`: King
-`m`: Marshal (Rook + Knight)
-`n`: kNight
-`p`: Pawn
-`q`: Queen
-`r`: Rook
+* `a`: Archbishop (Bishop + Knight)
+* `b`: Bishop
+* `k`: King
+* `m`: Marshal (Rook + Knight)
+* `n`: kNight
+* `p`: Pawn
+* `q`: Queen
+* `r`: Rook
 
-Note that this font only works in environments where a font with COLR0
-support works.  Fontforge doesn’t support this format, nor does the
-Windows11 operating system; this is a font for web browsers, to allow
-me to fit 250k worth of SVG icons in a tiny 15k WOFF2 file.  Note that
-LibreOffice *does* support this color font, so can be used when one
-wants to make printed Chess diagrams.
+This font only works in environments where a font with COLR0 support
+works.  Fontforge doesn’t support this format, nor does the Windows11
+operating system; this is a font for web browsers, to allow me to
+fit 250k worth of SVG icons in a tiny 15k WOFF2 file.  Nicely enough,
+LibreOffice *does* support this color font, so that word processor can
+used when one wants to make printed Chess diagrams.
 
 More discussion:
 

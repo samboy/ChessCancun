@@ -1,0 +1,289 @@
+<html><head><title>Sam T vs. NN, 1994</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style>
+@import url(ChessCancunColor.css);
+body { color: #333; background-color: #fff; }
+.chessDiagram8 { font-family: ChessCancunColor; font-size: 30px; 
+display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    width: 300px;
+    height: 300px;
+    border: 2px solid #333;
+}
+
+.chessDiagram8 div {
+    text-align: center;
+    padding-top: 1px; padding-bottom: -1px;
+    background-color: #fff; /* Light square */
+}
+
+/* Alternating colors using nth-child */
+.chessDiagram8 div:nth-child(-n+8):nth-child(even),
+.chessDiagram8 div:nth-child(n+9):nth-child(-n+16):nth-child(odd),
+.chessDiagram8 div:nth-child(n+17):nth-child(-n+24):nth-child(even),
+.chessDiagram8 div:nth-child(n+25):nth-child(-n+32):nth-child(odd),
+.chessDiagram8 div:nth-child(n+33):nth-child(-n+40):nth-child(even),
+.chessDiagram8 div:nth-child(n+41):nth-child(-n+48):nth-child(odd),
+.chessDiagram8 div:nth-child(n+49):nth-child(-n+56):nth-child(even),
+.chessDiagram8 div:nth-child(n+57):nth-child(-n+64):nth-child(odd) {
+    background-color: #ddd; /* Dark square */
+}
+.chessDiagram10x8 { font-family: ChessCancunColor; font-size: 30px; 
+display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    width: 375px;
+    height: 300px;
+    border: 2px solid #333;
+}
+
+.chessDiagram10x8 div {
+    text-align: center;
+    padding-top: 1px; padding-bottom: -1px;
+    background-color: #fff; /* Light square */
+}
+
+/* Alternating colors using nth-child */
+.chessDiagram10x8 div:nth-child(-n+10):nth-child(even),
+.chessDiagram10x8 div:nth-child(n+11):nth-child(-n+20):nth-child(odd),
+.chessDiagram10x8 div:nth-child(n+21):nth-child(-n+30):nth-child(even),
+.chessDiagram10x8 div:nth-child(n+31):nth-child(-n+40):nth-child(odd),
+.chessDiagram10x8 div:nth-child(n+41):nth-child(-n+50):nth-child(even),
+.chessDiagram10x8 div:nth-child(n+51):nth-child(-n+60):nth-child(odd),
+.chessDiagram10x8 div:nth-child(n+61):nth-child(-n+70):nth-child(even),
+.chessDiagram10x8 div:nth-child(n+71):nth-child(-n+80):nth-child(odd) {
+    background-color: #ddd; /* Dark square */
+}
+@media (prefers-color-scheme: dark) { 
+body { background-color: #131516; color: #d8d4cf; }
+.chessDiagram8 { border: 2px solid #ddd; }
+.chessDiagram8 div { background-color: #aaa; }
+.chessDiagram8 div:nth-child(-n+8):nth-child(even),
+.chessDiagram8 div:nth-child(n+9):nth-child(-n+16):nth-child(odd),
+.chessDiagram8 div:nth-child(n+17):nth-child(-n+24):nth-child(even),
+.chessDiagram8 div:nth-child(n+25):nth-child(-n+32):nth-child(odd),
+.chessDiagram8 div:nth-child(n+33):nth-child(-n+40):nth-child(even),
+.chessDiagram8 div:nth-child(n+41):nth-child(-n+48):nth-child(odd),
+.chessDiagram8 div:nth-child(n+49):nth-child(-n+56):nth-child(even),
+.chessDiagram8 div:nth-child(n+57):nth-child(-n+64):nth-child(odd) {
+background-color: #888; } 
+.chessDiagram10x8 { border: 2px solid #ddd; }
+.chessDiagram10x8 div { background-color: #aaa; }
+.chessDiagram10x8 div:nth-child(-n+10):nth-child(even),
+.chessDiagram10x8 div:nth-child(n+11):nth-child(-n+20):nth-child(odd),
+.chessDiagram10x8 div:nth-child(n+21):nth-child(-n+30):nth-child(even),
+.chessDiagram10x8 div:nth-child(n+31):nth-child(-n+40):nth-child(odd),
+.chessDiagram10x8 div:nth-child(n+41):nth-child(-n+50):nth-child(even),
+.chessDiagram10x8 div:nth-child(n+51):nth-child(-n+60):nth-child(odd),
+.chessDiagram10x8 div:nth-child(n+61):nth-child(-n+70):nth-child(even),
+.chessDiagram10x8 div:nth-child(n+71):nth-child(-n+80):nth-child(odd) {
+    background-color: #888; /* Dark square */
+}
+} /* End dark theme colors */
+</style>
+<meta name=viewport content=width=device-width,initial-scale=1.0 >
+</head><body>
+<center><table><tr><td width=640>
+<h1>Chess Cancun Color demo</h1>
+
+<div align=center>
+<div class=chessDiagram8><div>r</div> <div>n</div> <div>b</div>
+<div>q</div> <div>k</div> <div>b</div> <div>n</div> <div>r</div>
+<div>p</div> <div>p</div> <div>p</div> <div>p</div> <div>p</div>
+<div>p</div> <div>p</div> <div>p</div> <div></div> <div></div> <div></div>
+<div></div> <div></div> <div></div> <div></div> <div></div> <div></div>
+<div></div> <div></div> <div></div> <div></div> <div></div> <div></div>
+<div></div> <div></div> <div></div> <div></div> <div></div> <div></div>
+<div></div> <div></div> <div></div> <div></div> <div></div> <div></div>
+<div></div> <div></div> <div></div> <div></div> <div></div> <div>P</div>
+<div>P</div> <div>P</div> <div>P</div> <div>P</div> <div>P</div>
+<div>P</div> <div>P</div> <div>R</div> <div>N</div> <div>B</div>
+<div>Q</div> <div>K</div> <div>B</div> <div>N</div> <div>R</div> </div>
+<i>Caption</i>
+</div>
+
+<p>Also, 10x8 or 10x10 support
+<div align=center>
+<div class=chessDiagram10x8>
+<div>r</div>
+<div>n</div>
+<div>a</div>
+<div>b</div>
+<div>m</div>
+<div>k</div>
+<div>b</div>
+<div>q</div>
+<div>n</div>
+<div>r</div>
+
+<div>p</div>
+<div>p</div>
+<div>p</div>
+<div>p</div>
+<div>p</div>
+<div>p</div>
+<div>p</div>
+<div>p</div>
+<div>p</div>
+<div>p</div>
+
+<div></div> <div></div> <div></div> <div></div> <div></div> <div></div>
+<div></div> <div></div> <div></div> <div></div>
+
+<div></div> <div></div> <div></div> <div></div> <div></div> <div></div>
+<div></div> <div></div> <div></div> <div></div>
+
+<div></div> <div></div> <div></div> <div></div> <div></div> <div></div>
+<div></div> <div></div> <div></div> <div></div>
+
+<div></div> <div></div> <div></div> <div></div> <div></div> <div></div>
+<div></div> <div></div> <div></div> <div></div>
+
+<div>P</div>
+<div>P</div>
+<div>P</div>
+<div>P</div>
+<div>P</div>
+<div>P</div>
+<div>P</div>
+<div>P</div>
+<div>P</div>
+<div>P</div>
+
+<div>R</div>
+<div>N</div>
+<div>A</div>
+<div>B</div>
+<div>M</div>
+<div>K</div>
+<div>B</div>
+<div>Q</div>
+<div>N</div>
+<div>R</div>
+
+</div>
+<i>Finesse Chess</i>
+</div>
+
+<p>
+
+<h3>Sam T. vs. NN, 1994</h3>
+
+Many moons ago, I was sick and tired of my friends beating me at chess
+all the time, so I started going to a local chess club where chess
+masters mentored me and I was playing in USCF sponsored tournaments.
+I have a beautiful memory from this period of my life, of me hanging out
+with a buddy of mine who wasn’t part of the chess club, us bringing
+out a chessboard that was around, and starting to play chess:
+
+<p>
+<b>1. e4 e5 2. Nf3 Nf6 3. Nxe5 Nxe4 4. Qe2</b>
+
+<div align=center>
+<div class=chessDiagram8><div>r</div> <div>n</div> <div>b</div>
+<div>q</div> <div>k</div> <div>b</div> <div></div> <div>r</div>
+<div>p</div> <div>p</div> <div>p</div> <div>p</div> <div></div>
+<div>p</div> <div>p</div> <div>p</div> <div></div> <div></div> <div></div>
+<div></div> <div></div> <div></div> <div></div> <div></div> <div></div>
+<div></div> <div></div> <div></div> <div>N</div> <div></div> <div></div>
+<div></div> <div></div> <div></div> <div></div> <div></div> <div>n</div>
+<div></div> <div></div> <div></div> <div></div> <div></div> <div></div>
+<div></div> <div></div> <div></div> <div></div> <div></div> <div>P</div>
+<div>P</div> <div>P</div> <div>P</div> <div>Q</div> <div>P</div>
+<div>P</div> <div>P</div> <div>R</div> <div>N</div> <div>B</div>
+<div></div> <div>K</div> <div>B</div> <div></div> <div>R</div> </div>
+<i>Position after 4. Qe2</i>
+</div>
+
+<p>
+
+<i>Modern Chess Openings</i>, back when we would use a huge thick
+book to go over openings, points out Black’s best course of action at
+this point is 4...Qe7 5. Qxe4 d6 6. d4, but even here White is up a 
+pawn.
+
+<p>
+
+My opponent could see his knight was in trouble, so he responded
+with a counter threat, <b>4. f6?</b>, giving us this:
+
+<div align=center>
+<div class=chessDiagram8><div>r</div> <div>n</div> <div>b</div>
+<div>q</div> <div>k</div> <div>b</div> <div></div> <div>r</div>
+<div>p</div> <div>p</div> <div>p</div> <div>p</div> <div></div>
+<div></div> <div>p</div> <div>p</div> <div></div> <div></div> <div></div>
+<div></div> <div></div> <div>p</div> <div></div> <div></div> <div></div>
+<div></div> <div></div> <div></div> <div>N</div> <div></div> <div></div>
+<div></div> <div></div> <div></div> <div></div> <div></div> <div>n</div>
+<div></div> <div></div> <div></div> <div></div> <div></div> <div></div>
+<div></div> <div></div> <div></div> <div></div> <div></div> <div>P</div>
+<div>P</div> <div>P</div> <div>P</div> <div>Q</div> <div>P</div>
+<div>P</div> <div>P</div> <div>R</div> <div>N</div> <div>B</div>
+<div></div> <div>K</div> <div>B</div> <div></div> <div>R</div> </div>
+<i>Position after 4... f6?</i>
+</div>
+
+<p>
+
+Black’s kingside is now weak enough that we can ignore the threat against
+the knight on e5.
+
+<p>
+
+<b>5. Qh5+! g6 6. Nxg6 hxg6</b>
+
+<div align=center>
+<div class=chessDiagram8><div>r</div> <div>n</div> <div>b</div>
+<div>q</div> <div>k</div> <div>b</div> <div></div> <div>r</div>
+<div>p</div> <div>p</div> <div>p</div> <div>p</div> <div></div>
+<div></div> <div></div> <div></div> <div></div> <div></div> <div></div>
+<div></div> <div></div> <div>p</div> <div>p</div> <div></div> <div></div>
+<div></div> <div></div> <div></div> <div></div> <div></div> <div></div>
+<div>Q</div> <div></div> <div></div> <div></div> <div></div> <div>n</div>
+<div></div> <div></div> <div></div> <div></div> <div></div> <div></div>
+<div></div> <div></div> <div></div> <div></div> <div></div> <div>P</div>
+<div>P</div> <div>P</div> <div>P</div> <div></div> <div>P</div>
+<div>P</div> <div>P</div> <div>R</div> <div>N</div> <div>B</div>
+<div></div> <div>K</div> <div>B</div> <div></div> <div>R</div> </div>
+<i>Position after 6... hxg6</i>
+</div>
+
+<p>
+
+It would had been unneccessarily greedy to take the rook with 7. Qxh8,
+because the goal in Chess is to checkmate the opponent’s <i>king</i>.
+
+<p>
+
+<b>7. Qxg6+ Ke7 8. Qxd4+ Kd6? 9. Qd4+?</b> (better was 9. d4!) <b>Kc6?</b>
+
+<div align=center>
+<div class=chessDiagram8><div>r</div> <div>n</div> <div>b</div>
+<div>q</div> <div></div> <div>b</div> <div></div> <div>r</div>
+<div>p</div> <div>p</div> <div>p</div> <div>p</div> <div></div>
+<div></div> <div></div> <div></div> <div></div> <div></div> <div>k</div>
+<div></div> <div></div> <div>p</div> <div></div> <div></div> <div></div>
+<div></div> <div></div> <div></div> <div></div> <div></div> <div></div>
+<div></div> <div></div> <div></div> <div></div> <div>Q</div> <div></div>
+<div></div> <div></div> <div></div> <div></div> <div></div> <div></div>
+<div></div> <div></div> <div></div> <div></div> <div></div> <div>P</div>
+<div>P</div> <div>P</div> <div>P</div> <div></div> <div>P</div>
+<div>P</div> <div>P</div> <div>R</div> <div>N</div> <div>B</div>
+<div></div> <div>K</div> <div>B</div> <div></div> <div>R</div> </div>
+<i>Position after 9... Kc6. White to move and force mate.</i>
+</div>
+
+<p>
+
+Checkmate is now unavoidable.  The actual continuation
+was longer, but this is roughly how the game ended, with
+a few more moves in between:
+
+<p>
+
+<b>10. Qc4+ Kb6 11. Qb5#</b>
+
+</td></tr></table></center>
+</body></html>
+
