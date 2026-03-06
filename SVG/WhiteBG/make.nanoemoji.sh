@@ -30,3 +30,5 @@ cp BlackQueen.svg emoji_u0071.svg
 cp WhiteQueen.svg emoji_u0051.svg
 cp BlackRook.svg emoji_u0072.svg
 cp WhiteRook.svg emoji_u0052.svg
+# This only runs in Ubuntu
+nanoemoji --family ChessCancunColor --color_format glyf_colr_0 emoji_*

@@ -8,7 +8,7 @@ commands:
 
 ```
 sh make.nanoemoji.sh
-nanoemoji --family ChessCancunColor --color_format glyf_colr_0 emoji_*
+#nanoemoji --family ChessCancunColor --color_format glyf_colr_0 emoji_*
 ```
 
 (This had to be done in Ubuntu 14.04 LTS because it’s impossible to
