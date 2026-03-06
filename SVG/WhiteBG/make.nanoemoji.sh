@@ -24,9 +24,9 @@ cp BlackMarshal.svg emoji_u006d.svg
 cp WhiteMarshal.svg emoji_u004d.svg
 cp BlackKnight.svg emoji_u006e.svg
 cp WhiteKnight.svg emoji_u004e.svg 
-cp BlackPawn.svg emoji_0070.svg
-cp WhitePawn.svg emoji_0050.svg
-cp BlackQueen.svg emoji_0071.svg
-cp WhiteQueen.svg emoji_0051.svg
-cp BlackRook.svg emoji_0072.svg
-cp WhiteRook.svg emoji_0052.svg
+cp BlackPawn.svg emoji_u0070.svg
+cp WhitePawn.svg emoji_u0050.svg
+cp BlackQueen.svg emoji_u0071.svg
+cp WhiteQueen.svg emoji_u0051.svg
+cp BlackRook.svg emoji_u0072.svg
+cp WhiteRook.svg emoji_u0052.svg
