@@ -29,7 +29,9 @@ The mapping is this, where lower case is Black and upper case is White
 Note that this font only works in environments where a font with COLR0
 support works.  Fontforge doesn’t support this format, nor does the
 Windows11 operating system; this is a font for web browsers, to allow
-me to fit 250k worth of SVG icons in a tiny 15k WOFF2 file.
+me to fit 250k worth of SVG icons in a tiny 15k WOFF2 file.  Note that
+LibreOffice *does* support this color font, so can be used when one
+wants to make printed Chess diagrams.
 
 More discussion:
 
