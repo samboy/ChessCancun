@@ -1,0 +1,36 @@
+This is a color font which uses COLR0 font support which allows the font
+to have proper white backgroun in the figures, allowing us to have a 
+different backgroun color, allowing us to use CSS to specify the
+backgroun color.
+
+The font was made in the SVG/WhiteBG directory using the following
+command:
+
+```
+nanoemoji --family ChessCancunColor --color_format glyf_colr_0 emoji_*
+```
+
+(This had to be done in Ubuntu 14.04 LTS because it’s impossible to
+ install nanoemoji in Cygwin.  Sigh.)
+
+The mapping is this, where lower case is Black and upper case is White
+(as per the FEN specification):
+
+`a`: Archbishop (Bishop + Knight)
+`b`: Bishop
+`k`: King
+`m`: Marshal (Rook + Knight)
+`n`: kNight
+`p`: Pawn
+`q`: Queen
+`r`: Rook
+
+Note that this font only works in environments where a font with COLR0
+support works.  Fontforge doesn’t support this format, nor does the
+Windows11 operating system; this is a font for web browsers, to allow
+me to fit 250k worth of SVG icons in a tiny 15k WOFF2 file.
+
+More discussion:
+
+https://archive.ph/20260304061031/https://typedrawers.com/discussion/comment/67849
+
