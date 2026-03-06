@@ -1,12 +1,13 @@
 This is a color font which uses COLR0 font support which allows the font
 to have proper white background in the figures, allowing us to have a 
-different backgroun color, allowing us to use CSS to specify the
-backgroun color.
+different background color, allowing us to use CSS to specify the
+background color.
 
-The font was made in the SVG/WhiteBG directory using the following
-command:
+The font was made in the `SVG/WhiteBG` directory using the following
+commands:
 
 ```
+sh make.nanoemoji.sh
 nanoemoji --family ChessCancunColor --color_format glyf_colr_0 emoji_*
 ```
 
