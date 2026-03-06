@@ -1,5 +1,5 @@
 This is a color font which uses COLR0 font support which allows the font
-to have proper white backgroun in the figures, allowing us to have a 
+to have proper white background in the figures, allowing us to have a 
 different backgroun color, allowing us to use CSS to specify the
 backgroun color.
 
