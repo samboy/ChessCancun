@@ -15,7 +15,7 @@
 # Cancun; it’s better to use CSS and <span> for that (also, no borders)
 
 cp BlackArchbishop.svg emoji_u0061.svg
-cp WhiteArchbishop.svg emoju_u0041.svg
+cp WhiteArchbishop.svg emoji_u0041.svg
 cp BlackBishop.svg emoji_u0062.svg
 cp WhiteBishop.svg emoji_u0042.svg
 cp BlackKing.svg emoji_u006b.svg
