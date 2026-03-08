@@ -1,5 +1,15 @@
 #!/bin/sh
 
+# This project has been paused: nanoemoji needs to be hacked to always
+# make 2048x2048 characters in the font, to not move down the “top” box
+# drawing characters, so that
+# - The Box drawing characters work to make an edge for the board
+# - The Black squares are flush against the White squares on the
+#   checkerboard
+# Until we either get a F/OSS font editor with COLR0 support, or I
+# figure out how to hack nanoemoji to make fixed width glyphs, I am
+# pausing this project
+
 # Copy these files for Nanoemoji Use
 # This is a superset of the “hatch form” character set ChessCancun uses
 # Cancun; it’s better to use CSS and <span> for that (also, no borders)
