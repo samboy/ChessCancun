@@ -1,9 +1,10 @@
-  0123456789abcdef
-0 .ÁÉÍÑÓÚÜ¡..—..«»
-1 •áéíñóúü¿‘’.→“”©
-2 .!"#$%&'()*+,-./
-3 0123456789:;<=>?
-4 @ABCDEFGHIJKLMNO
-5 PQRSTUVWXYZ[\]^_
-6 `abcdefghijklmno
-7 pqrstuvwxyz{|}~♥
+  01234567 89abcdef
+0 .ÁÉÍÑÓÚÜ ¡..—..«»
+1 •áéíñóúü ¿‘’.→“”©
+2 .!"#$%&' ()*+,-./
+3 01234567 89:;<=>?
+4 @ABCDEFG HIJKLMNO
+5 PQRSTUVW XYZ[\]^_
+6 `abcdefg hijklmno
+7 pqrstuvw xyz{|}~♥
+  01234567 89abcdef
