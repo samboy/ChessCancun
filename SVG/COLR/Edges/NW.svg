@@ -10,10 +10,6 @@
    xmlns:svg="http://www.w3.org/2000/svg">
 <!-- N -->
 <rect x="0" y="0" width="2048" height="96" fill="black" />
-<!-- S -->
-<rect x="0" y="1952" width="2048" height="96" fill="black" />
-<!-- E -->
-<rect x="1952" y="0" width="96" height="2048" fill="black" />
 <!-- W -->
 <rect x="0" y="0" width="96" height="2048" fill="black" />
 </svg>

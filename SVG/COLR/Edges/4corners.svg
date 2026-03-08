@@ -8,6 +8,12 @@
    viewBox="0 0 2048 2048"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
+<!-- NW -->
+<rect x="0" y="0" width="96" height="96" fill="black" />
+<!-- NE -->
+<rect x="1952" y="0" width="96" height="96" fill="black" />
+<!-- SW -->
+<rect x="0" y="1952" width="96" height="96" fill="black" />
 <!-- SE -->
 <rect x="1952" y="1952" width="96" height="96" fill="black" />
 </svg>
