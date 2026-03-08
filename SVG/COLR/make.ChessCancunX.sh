@@ -63,7 +63,7 @@ cp Edges/cNW.svg emoji_u0029.svg # )
 cp Edges/NW.svg emoji_u005b.svg # [
 cp Edges/NE.svg emoji_u005d.svg # ]
 cp Edges/SW.svg emoji_u007b.svg # {
-cp Edges/SE.svg emoji_u007b.svg # }
+cp Edges/SE.svg emoji_u007d.svg # }
 cp Edges/NSEW.svg emoji_u002a.svg # *
 # This only runs in Ubuntu
 nanoemoji --family ChessCancunX --color_format glyf_colr_0 emoji_*
