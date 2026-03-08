@@ -49,7 +49,8 @@ cp OnDarkSquare/BlackKnightInverted.svg emoji_u0068.svg # H
 # Dark square
 cp OnDarkSquare/Square.svg emoji_u002b.svg # +
 # Light square
-cp LightSquare.svg emoji_u0020.svg # {space}
+# It looks like this causes nanoemoji to fail with a useless error message
+#cp LightSquare.svg emoji_u0020.svg # {space}
 # Edges and corners
 cp Edges/cSE.svg emoji_u0021.svg # !
 cp Edges/S.svg emoji_u0022.svg # "
