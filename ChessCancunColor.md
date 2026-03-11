@@ -16,6 +16,12 @@ sh make.nanoemoji.sh
 (This had to be done in Ubuntu 24.04 LTS because it’s impossible to
  install nanoemoji in Cygwin.  Sigh.)
 
+The font has subsequently been edited by coverting the font to XML
+using TTX, then editing the TTX font by hand.  In particular, it
+now will show the figures on systems without COLR support (albeit
+without the white “filling” so the figures look good on non-white
+backgrounds), and the figures can be more tightly fit in a CSS grid.
+
 The mapping is this, where lower case is Black and upper case is White
 (as per the FEN specification):
 
