@@ -310,8 +310,8 @@ elseif action == "ymult" then
     print("FATAL: mult arg is not a number")
     showUsage()
   end
-  if not colr[tomove] then
-    print("FATAL: Cannot find glyph " .. tomove)
+  if not colr[tomult] then
+    print("FATAL: Cannot find glyph " .. tomult)
     print('Use "dump" to list all COLR glyphs')
     showUsage()
   end
@@ -321,10 +321,10 @@ elseif action == "ymult" then
     os.exit(1)
   end
   local doMult = false
+  local name = ""
   for line in handle:lines() do
     if line:match("%<TTGlyph name") then
       local fields = {}
-      local name = ""
       fields = split(line,'"')
       if fields and #fields > 2 then
         name=fields[2]
@@ -348,6 +348,7 @@ elseif action == "ymult" then
         y = y - miny
         y = y * mult
         y = y + miny
+        y = math.floor(y + 0.5) -- Round to integer
         print(fields[1] .. '"' .. fields[2] .. '"' .. fields[3] .. '"' ..
               tostring(y) .. '"' .. fields[5] .. '"' .. fields[6] .. '"' ..
               fields[7])
