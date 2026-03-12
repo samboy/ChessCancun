@@ -88,6 +88,13 @@ function sPairs(inputTable,sFunc)
   end
 end
 
+-- Show usage
+function showUsage()
+  print("Usage: processTTX.lua {filename} {action} {param}")
+  print('action can be "dump"')
+  os.exit(0)
+end
+
 -- Pass 1: Get information about the font
 filename="ChessCancunColor.ttx"
 
@@ -95,8 +102,18 @@ if #arg >= 1 then
   filename=arg[1]
 end
 if filename:match("%-") or filename:match("^h") or filename:match("%?") then
-  print("Usage: processTTX.lua {filename}")
-  os.exit(0)
+  showUsage()
+end
+action = nil
+if #arg >= 2 then
+  action = arg[2]
+end
+param = nil
+if #arg >= 3 then
+  param = tonumber(arg[3])
+end
+if action == nil then
+  showUsage()
 end
 
 handle = io.open(filename,"rb")
@@ -197,3 +214,28 @@ for line in handle:lines() do
   end
 
 end
+
+handle:close()
+
+if action == "dump" then
+  for char in sPairs(colr) do
+    print("Glyph " .. char)
+    for subGlyph in sPairs(colr[char]) do
+      print("\t" .. subGlyph)
+    end
+  end
+  print("END COLR INFO")
+
+  for char in sPairs(glyph) do
+    print("Glyph " .. char)
+    for param,val in sPairs(glyph[char]) do
+      print("\t",param,val)
+    end
+  end
+  print("END GLYPH INFO")
+
+else 
+  print("Unknown action " .. action)
+  os.exit(1)
+end
+     
