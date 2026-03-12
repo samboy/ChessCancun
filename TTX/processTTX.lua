@@ -90,8 +90,12 @@ end
 
 -- Show usage
 function showUsage()
-  print("Usage: processTTX.lua {filename} {action} {param}")
-  print('action can be "dump"')
+  print("Usage: processTTX.lua {filename} {action} {params}")
+  print('action can be "dump", or "movey"')
+  print('"dump" shows information about the TTX font')
+  print('"movey" moves all of the sub-glyphs of a given COLR glyph')
+  print('up or down by the subsequent glyph and numeric argument; positive')
+  print('numbers move up and negative numbers down')
   os.exit(0)
 end
 
@@ -218,6 +222,7 @@ end
 handle:close()
 
 if action == "dump" then
+  print("<!--")
   for char in sPairs(colr) do
     print("Glyph " .. char)
     for subGlyph in sPairs(colr[char]) do
@@ -233,7 +238,64 @@ if action == "dump" then
     end
   end
   print("END GLYPH INFO")
+  print("-->")
 
+elseif action == "movey" then
+  if #arg < 4 then
+    print("FATAL: movey needs two arguments: glyph then move")
+    showUsage()
+  end
+  local tomove = arg[3]
+  local move = tonumber(arg[4])
+  if not move then
+    print("FATAL: move arg is not a number")
+    showUsage()
+  end
+  if not colr[tomove] then
+    print("FATAL: Cannot find glyph " .. tomove)
+    print('Use "dump" to list all COLR glyphs')
+    showUsage()
+  end
+  local handle = io.open(filename,"rb")
+  if not handle then 
+    print("FATAL: Cannot open file " .. filename)
+    os.exit(1)
+  end
+  local doMove = false
+  for line in handle:lines() do
+    if line:match("%<TTGlyph name") then
+      local fields = {}
+      local name = ""
+      fields = split(line,'"')
+      if fields and #fields > 2 then
+        name=fields[2]
+        if colr[tomove][name] then
+          doMove = true
+        else
+          doMove = false
+        end
+      end
+      print(line)
+    elseif line:match("%<%/TTGlyph%>") then
+      doMove = false
+      print(line)
+    elseif line:match("%<pt x") and doMove then
+      local fields = {}
+      local y = 0
+      fields = split(line,'"')
+      if fields and #fields > 6 then
+        y = tonumber(fields[4])
+        y = y + move
+        print(fields[1] .. '"' .. fields[2] .. '"' .. fields[3] .. '"' ..
+              tostring(y) .. '"' .. fields[5] .. '"' .. fields[6] .. '"' ..
+              fields[7])
+      else
+        print(line)
+      end
+    else
+      print(line)
+    end
+  end -- END "movey"
 else 
   print("Unknown action " .. action)
   os.exit(1)
