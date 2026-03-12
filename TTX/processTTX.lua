@@ -105,8 +105,10 @@ if not handle then
   os.exit(1)
 end
 
+none = {} -- Empty table used as "none" key
 hmtx = {}
-thisGlyph = ""
+thisGlyph = none
+thisColorGlyph = none
 colr = {}
 glyph = {}
 
@@ -171,4 +173,27 @@ for line in handle:lines() do
       end
     end
   end
+
+  -- Note which glyphs are together in a COLR glyph
+  if line:match("%<ColorGlyph name") then
+    local fields = {}
+    local name = ""
+    fields = split(line,'"')
+    if fields and #fields > 2 then
+      thisColorGlyph = fields[2]
+      if not colr[thisColorGlyph] then
+        colr[thisColorGlyph] = {}
+      end
+    end
+  end 
+  if line:match("%<layer colorID") then
+    local fields = {}
+    local name = ""
+    fields = split(line,'"')
+    if fields and #fields > 4 then
+      name = fields[4]
+      colr[thisColorGlyph][name] = true
+    end
+  end
+
 end
