@@ -91,11 +91,13 @@ end
 -- Show usage
 function showUsage()
   print("Usage: processTTX.lua {filename} {action} {params}")
-  print('action can be "dump", or "movey"')
+  print('action can be "dump", "movey", or "ymult"')
   print('"dump" shows information about the TTX font')
   print('"movey" moves all of the sub-glyphs of a given COLR glyph')
   print('up or down by the subsequent glyph and numeric argument; positive')
   print('numbers move up and negative numbers down')
+  print('"ymult" makes all of the sub-glyphs of a given COLR glyph')
+  print('taller or shorter')
   os.exit(0)
 end
 
@@ -296,6 +298,67 @@ elseif action == "movey" then
       print(line)
     end
   end -- END "movey"
+
+elseif action == "ymult" then
+  if #arg < 4 then
+    print("FATAL: ymult needs two arguments: glyph then mult")
+    showUsage()
+  end
+  local tomult = arg[3]
+  local mult = tonumber(arg[4])
+  if not mult then
+    print("FATAL: mult arg is not a number")
+    showUsage()
+  end
+  if not colr[tomove] then
+    print("FATAL: Cannot find glyph " .. tomove)
+    print('Use "dump" to list all COLR glyphs')
+    showUsage()
+  end
+  local handle = io.open(filename,"rb")
+  if not handle then 
+    print("FATAL: Cannot open file " .. filename)
+    os.exit(1)
+  end
+  local doMult = false
+  for line in handle:lines() do
+    if line:match("%<TTGlyph name") then
+      local fields = {}
+      local name = ""
+      fields = split(line,'"')
+      if fields and #fields > 2 then
+        name=fields[2]
+        if colr[tomult][name] then
+          doMult = true
+        else
+          doMult = false
+        end
+      end
+      print(line)
+    elseif line:match("%<%/TTGlyph%>") then
+      doMult = false
+      print(line)
+    elseif line:match("%<pt x") and doMult then
+      local fields = {}
+      local y = 0
+      fields = split(line,'"')
+      if fields and #fields > 6 and glyph[name] then
+        local miny = glyph[name]['minY']
+        y = tonumber(fields[4])
+        y = y - miny
+        y = y * mult
+        y = y + miny
+        print(fields[1] .. '"' .. fields[2] .. '"' .. fields[3] .. '"' ..
+              tostring(y) .. '"' .. fields[5] .. '"' .. fields[6] .. '"' ..
+              fields[7])
+      else
+        print(line)
+      end
+    else
+      print(line)
+    end
+  end -- END "ymult"
+
 else 
   print("Unknown action " .. action)
   os.exit(1)
