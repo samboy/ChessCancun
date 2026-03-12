@@ -322,6 +322,13 @@ elseif action == "ymult" then
   end
   local doMult = false
   local name = ""
+  -- Make sure “0” is the lowest point for all sub-glyphs
+  local zMinY = 999999
+  for char in sPairs(colr[tomult]) do
+    if glyph[char]['minY'] < zMinY then
+      zMinY = glyph[char]['minY']
+    end
+  end
   for line in handle:lines() do
     if line:match("%<TTGlyph name") then
       local fields = {}
@@ -343,11 +350,10 @@ elseif action == "ymult" then
       local y = 0
       fields = split(line,'"')
       if fields and #fields > 6 and glyph[name] then
-        local miny = glyph[name]['minY']
         y = tonumber(fields[4])
-        y = y - miny
+        y = y - zMinY
         y = y * mult
-        y = y + miny
+        y = y + zMinY
         y = math.floor(y + 0.5) -- Round to integer
         print(fields[1] .. '"' .. fields[2] .. '"' .. fields[3] .. '"' ..
               tostring(y) .. '"' .. fields[5] .. '"' .. fields[6] .. '"' ..
