@@ -1,0 +1,174 @@
+#!/bin/sh
+_rem=--[=[
+# This script processes a TTX file for a COLR font
+LUNACY=""
+if command -v lunacy64 >/dev/null 2>&1 ; then
+  LUNACY=lunacy64
+elif command -v lua5.1 >/dev/null 2>&1 ; then
+  LUNACY=lua5.1
+elif command -v lua-5.1 >/dev/null 2>&1 ; then
+  LUNACY=lua-5.1
+elif command -v lunacy >/dev/null 2>&1 ; then
+  LUNACY=lunacy
+elif command -v luajit >/dev/null 2>&1 ; then
+  LUNACY=luajit # I assume luajit will remain frozen at Lua 5.1
+fi
+if [ -z "$LUNACY" ] ; then
+  echo Please install Lunacy or Lua 5.1
+  echo https://github.com/samboy/lunacy
+  exit 1
+fi
+
+exec $LUNACY $0 "$@"
+
+# ]=]1
+-- This script is written in Lua 5.1
+
+-- This script has been donated to the public domain in 2026 by Sam Trenholme
+-- If, for some reason, a public domain declation is not acceptable, it
+-- may be licensed under the following terms:
+
+-- Copyright 2026 Sam Trenholme
+-- Permission to use, copy, modify, and/or distribute this software for
+-- any purpose with or without fee is hereby granted.
+-- THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+-- WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES
+-- OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+-- ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+-- WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+-- ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+-- OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+-- Utility functions --
+-- Since Lunacy doesn't have split(), we make
+-- it ourselves.  Like Perl’s split(), this can
+-- split on regular expressions
+-- Input is string, regex, output is an array with the string parts
+function split(s, splitOn)
+  if not splitOn then splitOn = "," end
+  local place = true
+  local out = {}
+  local mark
+  local last = 1
+  while place do
+    place, mark = string.find(s, splitOn, last, false)
+    if place then
+      table.insert(out,string.sub(s, last, place - 1))
+      last = mark + 1
+    end
+  end
+  table.insert(out,string.sub(s, last, -1))
+  return out
+end
+
+-- We need to go through tables in sorted order sometimes
+-- Like pairs() but sorted
+-- This assumes all keys are of the same type
+function sPairs(inputTable,sFunc)
+  if not sFunc then
+    sFunc = function(a, b)
+      local ta = type(a)
+      local tb = type(b)
+      if(ta == tb)
+        then return a < b
+      end
+      return ta < tb
+    end
+  end
+  local keyList = {}
+  local index = 1
+  for k,_ in pairs(inputTable) do
+    table.insert(keyList,k)
+  end
+  table.sort(keyList,sFunc)
+  return function()
+    rvalue = keyList[index]
+    index = index + 1
+    return rvalue, inputTable[rvalue]
+  end
+end
+
+-- Pass 1: Get information about the font
+filename="ChessCancunColor.ttx"
+
+if #arg >= 1 then
+  filename=arg[1]
+end
+if filename:match("%-") or filename:match("^h") or filename:match("%?") then
+  print("Usage: processTTX.lua {filename}")
+  os.exit(0)
+end
+
+handle = io.open(filename,"rb")
+if not handle then
+  print("Cannot open " .. filename .. "\n")
+  os.exit(1)
+end
+
+hmtx = {}
+thisGlyph = ""
+colr = {}
+glyph = {}
+
+for line in handle:lines() do
+  -- Store mtx (width and left-right alignment) data
+  if line:match("%<mtx name") then
+    local fields = {}
+    local name = ""
+    local width = ""
+    local lsb = "" -- lsb is horizontal alignment of glyph
+    fields = split(line,'"')
+    if fields and #fields > 6 then
+      name=fields[2]
+      width=fields[4]
+      lsb=fields[6]
+      if not hmtx[name] then hmtx[name] = {} end
+      hmtx[name]['width'] = width
+      hmtx[name]['lsb'] = lsb
+    end
+  end
+
+  -- Find out min/max x/y for each glyph
+  if line:match("%<TTGlyph name") then
+    local fields = {}
+    local name = ""
+    fields = split(line,'"')
+    if fields and #fields > 2 then
+      name=fields[2]
+      thisGlyph = name
+      if not glyph[thisGlyph] then
+        glyph[thisGlyph] = {}
+        glyph[thisGlyph]['minX'] = 999999
+        glyph[thisGlyph]['minY'] = 999999
+        glyph[thisGlyph]['maxX'] = -999999
+        glyph[thisGlyph]['maxY'] = -999999
+      end
+    end
+  end
+  if line:match("%<pt x") then
+    local fields = {}
+    local x = 0
+    local y = 0
+    fields = split(line,'"')
+    if fields and #fields > 4 then
+      x = tonumber(fields[2])
+      y = tonumber(fields[4])
+      if x then
+        if x < glyph[thisGlyph]['minX'] then
+          glyph[thisGlyph]['minX'] = x
+        end
+        if x > glyph[thisGlyph]['maxX'] then
+          glyph[thisGlyph]['maxX'] = x
+        end
+      end
+      if y then
+        if y < glyph[thisGlyph]['minY'] then
+          glyph[thisGlyph]['minY'] = y
+        end
+        if y > glyph[thisGlyph]['maxY'] then
+          glyph[thisGlyph]['maxY'] = y
+        end
+      end
+    end
+  end
+end
