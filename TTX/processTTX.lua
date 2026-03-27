@@ -98,6 +98,7 @@ function showUsage()
   print('numbers move up and negative numbers down')
   print('"ymult" makes all of the sub-glyphs of a given COLR glyph')
   print('taller or shorter')
+  print('Output is standard output')
   os.exit(0)
 end
 
