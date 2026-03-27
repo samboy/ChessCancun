@@ -91,7 +91,7 @@ end
 -- Show usage
 function showUsage()
   print("Usage: processTTX.lua {filename} {action} {params}")
-  print('action can be "dump", "movey", or "ymult"')
+  print('action can be "dump", "movey", "ymult", or "xmove"')
   print('"dump" shows information about the TTX font')
   print('"movey" moves all of the sub-glyphs of a given COLR glyph')
   print('up or down by the subsequent glyph and numeric argument; positive')
@@ -365,6 +365,44 @@ elseif action == "ymult" then
       print(line)
     end
   end -- END "ymult"
+
+elseif action == "xmove" then
+  if #arg < 4 then
+    print("FATAL: xmove needs two arguments: glyph then move")
+    showUsage()
+  end
+  local tomove = arg[3]
+  local move = tonumber(arg[4])
+  if not move then
+    print("FATAL: move arg is not a number")
+    showUsage()
+  end
+  if not colr[tomove] then
+    print("FATAL: Cannot find glyph " .. tomove)
+    print('Use "dump" to list all COLR glyphs')
+    showUsage()
+  end
+  local handle = io.open(filename,"rb")
+  if not handle then 
+    print("FATAL: Cannot open file " .. filename)
+    os.exit(1)
+  end
+  for line in handle:lines() do
+    if line:match("%<mtx") then
+      fields = split(line,'%"')
+      if #fields >= 7 and colr[tomove][fields[2]] then
+        local position = fields[6]
+        position = tonumber(position)
+        if position then
+          position = position + move
+          line = fields[1] .. '"' .. fields[2] .. '"' .. fields[3] ..
+                '"' .. fields[4] .. '"' .. fields[5] .. '"' .. 
+                tostring(position) .. '"' .. fields[7]
+        end
+      end
+    end
+    print(line)
+  end -- "xmove" action
 
 else 
   print("Unknown action " .. action)
