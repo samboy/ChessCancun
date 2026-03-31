@@ -116,6 +116,7 @@ if #arg >= 1 then
     print("       {darkcolor} {lightcolor} {bordercolor}")
     print("Colors are any valid SVG color, e.g. #ccc or #fff etc.")
     print("Output is SVG file on stdout")
+    print("Example: MakeChessBoard 8 8 48 2 '#ccc' '#fff' '#333' > board.svg")
     os.exit(0)
   end
   width = tonumber(arg[1])
