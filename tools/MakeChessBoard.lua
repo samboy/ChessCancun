@@ -113,7 +113,7 @@ width = 8
 if #arg >= 1 then
   if arg[1]:match("h") or arg[1]:match("%-") or arg[1]:match("%?") then
     print("Usage: MakeChessBoard {width} {height} {squaresize} {boardersize}")
-    print("{darkcolor} {lightcolor}")
+    print("       {darkcolor} {lightcolor} {bordercolor}")
     print("Colors are any valid SVG color, e.g. #ccc or #fff etc.")
     print("Output is SVG file on stdout")
     os.exit(0)
@@ -152,10 +152,13 @@ dark = "#ccc"
 if #arg >= 5 then
   dark = arg[5]
 end
-bordercolor = dark
 light = "#fff"
 if #arg >= 6 then
   light = arg[6]
+end
+bordercolor = dark
+if #arg >= 7 then
+  bordercolor = arg[7]
 end
 scale = 1
 xmax = 2 * border + square * width
