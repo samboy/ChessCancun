@@ -140,12 +140,12 @@ if #arg >= 3 then
     square = 50
   end
 end
-border = 4
+border = 2
 if #arg >= 4 then
   border = tonumber(arg[4])
   if not border then
-    print("<!-- Warning border not set using 4 -->")
-    border = 4
+    print("<!-- Warning border not set using 2 -->")
+    border = 2
   end
 end
 dark = "#ccc"
