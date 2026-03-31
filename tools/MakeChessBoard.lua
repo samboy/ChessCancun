@@ -88,23 +88,16 @@ function sPairs(inputTable,sFunc)
   end
 end
 
-function svgHeader(scale, xmax, ymax, rotate)
+function svgHeader(scale, xmax, ymax)
   local width = math.floor(xmax * scale + 1.0)
   local height = math.floor(ymax * scale + 1.0)
-  if not rotate then
-    return '<svg viewBox="0 0 ' .. tostring((xmax + 2) * scale)
+  return '<svg viewBox="0 0 ' .. tostring((xmax + 2) * scale)
            .. ' ' ..
            tostring((ymax + 2) * scale) ..
            '" width="' .. width .. '" height="' .. height .. '" '
            .. 'xmlns="http://www.w3.org/2000/svg">'
-  end
-  return '<svg viewBox="0 0 ' .. tostring((ymax + 2) * scale)
-         .. ' ' ..
-         tostring((xmax + 2) * scale) ..
-         '" width="' .. width .. '" height="' .. height .. '" '
-         .. 'xmlns="http://www.w3.org/2000/svg">'
 end
-function svgFooter(scale, xmax, ymax, rotate)
+function svgFooter(scale, xmax, ymax)
   return '</svg>'
 end
 function rect(scale, width, height, x, y, color)
@@ -159,8 +152,37 @@ dark = "#ccc"
 if #arg >= 5 then
   dark = arg[5]
 end
+bordercolor = dark
 light = "#fff"
 if #arg >= 6 then
   light = arg[6]
 end
 scale = 1
+xmax = 2 * border + square * width
+ymax = 2 * border + square * height
+-- Draw the board
+print(svgHeader(scale,xmax,ymax))
+-- Boarder
+print(rect(scale, border, ymax-border, 0, 0, bordercolor)) -- Left
+print(rect(scale, xmax-border, border, 0, ymax-border, bordercolor)) -- Right
+print(rect(scale, xmax-border, border, border, 0, bordercolor)) -- Top
+print(rect(scale, border, ymax-border, xmax-border, border, bordercolor)) 
+-- Squares
+for y=1,height do
+  for x=1,width do
+    local fill = dark
+    if(y % 2 == 1) then
+      if(x % 2 == 1) then
+        fill = light
+      end
+    elseif(y % 2 == 0) then
+      if(x % 2 == 0) then
+        fill = light
+      end
+    end
+    print(rect(scale,square,square,border + square * (x-1),
+               border + square * (y-1),fill))
+  end
+end
+print(svgFooter(scale,xmax,ymax))
+
